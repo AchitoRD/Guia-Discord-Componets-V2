@@ -1,8 +1,6 @@
 # Guia-Discord-Componets-V2
 📘 Guía completa de Discord Components V2 en español, con ejemplos prácticos, documentación actualizada y contenido complementario para facilitar el desarrollo de bots con discord.js.
 
-# Discord.js Components V2 — Guía para Principiantes
-# Discord.js Components V2 — Guía para Principiantes
 
 > Guía por **itsfizys** — Traducida y ampliada • Servidor de Soporte: [discord.gg/aerox](https://discord.gg/aerox)
 
