@@ -1,5 +1,7 @@
 # 1. Estructura del Mensaje
 
+> **⚠️ Requisito:** discord.js **>= 14.23.0** — las APIs de Components V2 no existen en versiones anteriores.
+
 En Discord.js no existe una clase `LayoutView`. Un mensaje CV2 es simplemente una llamada normal a `send()` o `reply()` con dos cosas clave:
 
 1. Un array `components` que contiene tus builders

@@ -1,5 +1,7 @@
 # 14. Consejos y Errores Comunes
 
+> **⚠️ Requisito:** discord.js **>= 14.23.0** — las APIs de Components V2, `LabelBuilder`, `FileUploadBuilder`, `addLabelComponents`, etc. no existen en versiones anteriores.
+
 Errores frecuentes, límites y cosas que debes saber antes de publicar.
 
 ---
@@ -76,6 +78,16 @@ await channel.send({
 });
 ```
 
+## SectionBuilder Requiere Accesorio Obligatorio
+
+`SectionBuilder` **siempre necesita** un accesorio (`.setThumbnailAccessory()` o `.setButtonAccessory()`). Sin él, lanza:
+
+```
+CombinedError: Expected ButtonBuilder | ThumbnailBuilder, received undefined
+```
+
+Si no necesitas imagen ni botón, usa `TextDisplayBuilder` directamente dentro del `ContainerBuilder`.
+
 ## Sections: 1–3 TextDisplays
 
 Un `SectionBuilder` acepta entre **1 y 3** elementos `TextDisplayBuilder`. Más de 3 causará un error.
@@ -92,6 +104,38 @@ Un `SectionBuilder` acepta entre **1 y 3** elementos `TextDisplayBuilder`. Más 
 | Texto total en todos los TextDisplays | 4000 caracteres |
 
 El límite de **40 componentes** es el más importante — cada `ContainerBuilder`, `TextDisplayBuilder`, `SeparatorBuilder`, `SectionBuilder`, `ActionRowBuilder`, `ButtonBuilder`, etc. cuenta, incluyendo los anidados.
+
+## TextInputBuilder NO lleva .setLabel() dentro de LabelBuilder
+
+Cuando un `TextInputBuilder` está envuelto en un `LabelBuilder`, **no debe** tener `.setLabel()`. La etiqueta va únicamente en el `LabelBuilder`:
+
+```js
+// ❌ INCORRECTO — lanza TEXT_INPUT_COMPONENT_LABEL_IN_LABEL_COMPONENT
+new TextInputBuilder().setLabel('Título').setCustomId('titulo')
+
+// ✅ CORRECTO — la label va en LabelBuilder
+new LabelBuilder()
+  .setLabel('Título')
+  .setTextInputComponent(
+    new TextInputBuilder().setCustomId('titulo')
+  )
+```
+
+## getUploadedFiles() devuelve Collection, no Array
+
+`interaction.fields.getUploadedFiles('campo')` devuelve un `Collection<string, Attachment>` de discord.js, **no** un Array.
+
+```js
+const files = interaction.fields.getUploadedFiles('imagen');
+
+// ✅ Válido
+if (files?.size > 0) { /* hay archivos */ }
+files.first().url        // URL del primer archivo
+files.map(a => a.url)    // URLs de todos
+
+// ❌ NO funciona
+if (files?.length) { /* undefined — Collection no tiene .length */ }
+```
 
 ## Los Modals Requieren Respuesta Inmediata
 

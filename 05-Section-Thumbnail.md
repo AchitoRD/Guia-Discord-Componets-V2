@@ -2,6 +2,8 @@
 
 `SectionBuilder` coloca texto **lado a lado** con un accesorio — ya sea un `ThumbnailBuilder` (imagen) o un `ButtonBuilder`. Útil para tarjetas de perfil, paneles de información de usuario, o cualquier combinación de texto + imagen.
 
+> **⚠️ IMPORTANTE:** `SectionBuilder` **siempre requiere un accesorio** (`.setThumbnailAccessory()` o `.setButtonAccessory()`). Si no lo usas, lanza: `CombinedError: Expected ButtonBuilder | ThumbnailBuilder, received undefined`. Si no necesitas imagen ni botón, usa `TextDisplayBuilder` directamente dentro del `ContainerBuilder`.
+
 ---
 
 ## Con una Thumbnail (Imagen)
@@ -97,5 +99,6 @@ new ThumbnailBuilder()
 
 - Una sección puede contener de **1 a 3** elementos `TextDisplayBuilder`
 - El accesorio puede ser un `ThumbnailBuilder` **o** un `ButtonBuilder` — ambos están soportados
+- **El accesorio es OBLIGATORIO.** SectionBuilder sin accesorio lanza error
 - `ThumbnailBuilder` solo acepta una URL — usa `attachment://filename` para archivos locales
 - La sección puede estar en el primer nivel o dentro de un `ContainerBuilder`

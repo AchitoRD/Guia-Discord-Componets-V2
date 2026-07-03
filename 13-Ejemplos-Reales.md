@@ -277,3 +277,74 @@ function buildPage(items, page = 0, pageSize = 5) {
   return container;
 }
 ```
+
+## 9. Modal con FileUploadBuilder + MediaGallery (flujo completo)
+
+El usuario sube una imagen mediante un modal y se muestra inmediatamente en una galería CV2.
+
+```js
+const { SlashCommandBuilder, ModalBuilder, LabelBuilder, FileUploadBuilder, TextInputBuilder,
+  TextInputStyle, ContainerBuilder, TextDisplayBuilder, MediaGalleryBuilder,
+  MediaGalleryItemBuilder, MessageFlags, Events } = require('discord.js');
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('publicar')
+    .setDescription('Publica una imagen con título'),
+
+  async execute(interaction) {
+    const modal = new ModalBuilder().setCustomId('pub_modal').setTitle('Publicar imagen');
+
+    const tituloInput = new TextInputBuilder()
+      .setCustomId('titulo')
+      .setStyle(TextInputStyle.Short)
+      .setMaxLength(100);
+
+    const tituloLabel = new LabelBuilder()
+      .setLabel('Título de la imagen')
+      .setTextInputComponent(tituloInput);
+
+    const fileUpload = new FileUploadBuilder()
+      .setCustomId('imagen')
+      .setMaxValues(1);
+
+    const fileLabel = new LabelBuilder()
+      .setLabel('Selecciona una imagen')
+      .setFileUploadComponent(fileUpload);
+
+    modal.addLabelComponents(tituloLabel, fileLabel);
+    await interaction.showModal(modal);
+  },
+};
+
+// Manejador del modal (en events/interactionCreate.js o similar):
+client.on(Events.InteractionCreate, async (interaction) => {
+  if (!interaction.isModalSubmit() || interaction.customId !== 'pub_modal') return;
+
+  await interaction.deferReply({ ephemeral: true });
+
+  const titulo = interaction.fields.getTextInputValue('titulo');
+  const archivos = interaction.fields.getUploadedFiles('imagen');
+
+  const container = new ContainerBuilder()
+    .setAccentColor(0x5865F2)
+    .addTextDisplayComponents(
+      new TextDisplayBuilder().setContent(`### ${titulo}`)
+    );
+
+  if (archivos?.size) {
+    container.addMediaGalleryComponents(
+      new MediaGalleryBuilder().addItems(
+        new MediaGalleryItemBuilder()
+          .setURL(archivos.first().url) // ✅ URL directa de la CDN
+          .setDescription(titulo)
+      )
+    );
+  }
+
+  await interaction.editReply({
+    components: [container],
+    flags: MessageFlags.IsComponentsV2,
+  });
+});
+```
