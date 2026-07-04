@@ -1,4 +1,4 @@
-# 2. Container
+# 2. :package: Container
 
 `ContainerBuilder` es el bloque de construcción principal de un diseño CV2. Agrupa componentes y opcionalmente añade una barra de acento de color en el lado izquierdo — similar a la franja de color de un embed de Discord.
 
@@ -74,3 +74,8 @@ const container = new ContainerBuilder()
 - Un mensaje puede contener **múltiples** contenedores en el primer nivel
 - Los contenedores pueden contener: `TextDisplayBuilder`, `SeparatorBuilder`, `SectionBuilder`, `MediaGalleryBuilder`, `FileBuilder`, `ActionRowBuilder`
 - Los contenedores **no pueden** anidarse dentro de otros contenedores
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

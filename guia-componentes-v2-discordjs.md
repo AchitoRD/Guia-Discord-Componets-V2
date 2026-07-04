@@ -1,36 +1,55 @@
-# Discord.js Components V2 — Guía Completa en Español
+[![discord.js](https://img.shields.io/badge/discord.js-v14.23%2B-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.js.org)
+[![Licencia](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+[![Idioma](https://img.shields.io/badge/idioma-español-orange?style=flat-square)](#)
+[![Servidor](https://img.shields.io/badge/soporte-discord.gg/aerox-5865F2?style=flat-square&logo=discord)](https://discord.gg/aerox)
 
-> **Descripción:** Guía traducida y ampliada de [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide) por **itsfizys**, combinada con contenido oficial de [discordjs.guide](https://discordjs.guide) (modals, botones, select-menus, action-rows, interacciones).
->
-> Todo en un solo lugar, en español, para que aprendas a usar Components V2, modals y componentes interactivos de Discord.js desde cero.
->
-> Servidor de Soporte: [discord.gg/aerox](https://discord.gg/aerox)
+# :robot: Discord.js Components V2 — Guía Completa en Español
 
-> **⚠️ Requisito:** Esta guía requiere **discord.js >= 14.23.0**. Las APIs `LabelBuilder`, `FileUploadBuilder`, `ContainerBuilder`, `SectionBuilder`, `addLabelComponents`, `StringSelectMenuBuilder.setRequired()` y demás componentes CV2 no existen en versiones anteriores.
-
-Components V2 es el nuevo sistema de diseño de mensajes de Discord que te da **control total** sobre el aspecto de los mensajes de tu bot. Es más potente y flexible que el sistema tradicional de `embed`.
-
-> **📁 Archivos separados:** También disponible en archivos individuales dentro de la carpeta [`guia-componentes-v2/`](guia-componentes-v2/).
+> :book: **Acerca de esta guía**  
+> Traducción y ampliación de la [guía de Components V2](https://github.com/itsfizys/discordjs-components-v2-guide) por **itsfizys**, combinada con contenido oficial de [discordjs.guide](https://discordjs.guide) — modals, botones, select-menus, action-rows e interacciones.  
+> Todo en un solo lugar, en español, para que domines Components V2, modals y componentes interactivos de Discord.js.
 
 ---
 
-## Novedades en Components V2
+## :warning: Requisito
 
-- Diseños totalmente personalizables
-- Texto enriquecido con soporte completo de Markdown
-- UI limpia con secciones, imágenes y espaciado
-- Botones y menús desplegables funcionan directamente en el diseño
-- `content`, `embeds`, `stickers` y `polls` **no pueden** usarse junto con componentes CV2
-- Debes pasar la bandera `MessageFlags.IsComponentsV2` en cada mensaje CV2
+:exclamation: Esta guía requiere **discord.js >= 14.23.0**.  
+Las APIs `LabelBuilder`, `FileUploadBuilder`, `ContainerBuilder`, `SectionBuilder`, `addLabelComponents`, `StringSelectMenuBuilder.setRequired()` y demás componentes CV2 **no existen** en versiones anteriores.
+
+:package: Instalación:
+```bash
+npm install discord.js@latest
+# o una versión específica:
+npm install discord.js@14.23.0
+```
 
 ---
 
-## 📁 Archivos Separados
+## :rocket: ¿Qué es Components V2?
 
-Cada tema tiene su propio archivo en la carpeta `guia-componentes-v2/`:
+Components V2 es el nuevo sistema de diseño de mensajes de Discord que reemplaza a los embeds tradicionales. Te da **control total** sobre el layout de los mensajes de tu bot con una API limpia y moderna.
 
-| # | Archivo | Tema |
-|---|---------|------|
+### :sparkles: Lo que trae de nuevo
+
+| Característica | Descripción |
+|:--------------|:------------|
+| :art: **Diseños personalizables** | Containers, secciones, separadores y galerías |
+| :page_facing_up: **Markdown completo** | Headings, negritas, listas, blockquotes, código |
+| :framed_picture: **Galerías de medios** | Imágenes y videos en cuadrícula |
+| :point_up: **Componentes interactivos** | Botones y menús desplegables incrustados |
+| :zap: **Archivos en línea** | Transcripts, logs, exports sin embeds |
+| :no_entry: **Sin convivencia** | `content`, `embeds`, `stickers` y `polls` no pueden usarse junto a CV2 |
+
+:warning: Cada mensaje CV2 **debe** incluir la bandera `MessageFlags.IsComponentsV2`.
+
+---
+
+## :file_folder: Archivos Separados
+
+Cada tema tiene su propio archivo en la carpeta [`guia-componentes-v2/`](guia-componentes-v2/):
+
+| # | Archivo | :book: Tema |
+|:-:|:--------|:------------|
 | 1 | [`01-Estructura-Mensaje.md`](guia-componentes-v2/01-Estructura-Mensaje.md) | Cómo se estructuran los mensajes CV2 |
 | 2 | [`02-Container.md`](guia-componentes-v2/02-Container.md) | Agrupación de componentes con color de acento |
 | 3 | [`03-TextDisplay.md`](guia-componentes-v2/03-TextDisplay.md) | Renderizado de texto Markdown |
@@ -48,50 +67,52 @@ Cada tema tiene su propio archivo en la carpeta `guia-componentes-v2/`:
 
 ---
 
-## Bloques de Construcción Básicos
+## :hammer_and_wrench: Bloques de Construcción
 
-| Builder | Qué Hace |
-|---------|----------|
-| `ContainerBuilder` | Bloque de diseño exterior con color de acento opcional |
-| `TextDisplayBuilder` | Renderiza texto con soporte completo de Markdown |
-| `SectionBuilder` | Agrupa texto lado a lado con una miniatura o botón |
-| `SeparatorBuilder` | Añade una línea divisoria o espacio entre componentes |
-| `MediaGalleryBuilder` | Muestra imágenes/videos en una cuadrícula |
-| `FileBuilder` | Adjunta y muestra archivos en línea |
-| `ActionRowBuilder` | Añade botones o menús desplegables dentro de un diseño |
-| `ThumbnailBuilder` | Accesorio de imagen pequeña dentro de una Section |
+| Builder | :page_facing_up: Qué hace |
+|:--------|:--------------------------|
+| `ContainerBuilder` | Contenedor exterior con color de acento opcional |
+| `TextDisplayBuilder` | Renderiza texto con Markdown completo |
+| `SectionBuilder` | Texto lado a lado con miniatura o botón (requiere :red_circle: accesorio) |
+| `SeparatorBuilder` | Línea divisoria o espacio entre componentes |
+| `MediaGalleryBuilder` | Imágenes/videos en cuadrícula |
+| `FileBuilder` | Archivos adjuntos en línea |
+| `ActionRowBuilder` | Botones o menús desplegables |
+| `ThumbnailBuilder` | Imagen pequeña como accesorio de Section |
 
 ---
 
-## Tabla de Contenidos
+## :memo: Tabla de Contenidos
 
-| # | Guía | Descripción |
-|---|------|-------------|
+| # | Guía | :page_facing_up: Descripción |
+|:-:|:-----|:----------------------------|
 | 1 | [Estructura del Mensaje](#1-estructura-del-mensaje) | Cómo se estructuran los mensajes CV2 |
-| 2 | [Container](#2-container) | Agrupación de componentes con color de acento opcional |
+| 2 | [Container](#2-container) | Agrupación con color de acento |
 | 3 | [TextDisplay](#3-textdisplay) | Renderizado de texto Markdown |
 | 4 | [Separator](#4-separator) | Divisores visuales y espaciado |
-| 5 | [Section y Thumbnail](#5-section-y-thumbnail) | Texto lado a lado + imagen o botón |
+| 5 | [Section y Thumbnail](#5-section-y-thumbnail) | Texto + imagen o botón lado a lado |
 | 6 | [MediaGallery](#6-mediagallery) | Cuadrículas de imágenes y videos |
 | 7 | [File Component](#7-file-component) | Archivos adjuntos en línea |
 | 8 | [ActionRow](#8-actionrow) | Botones y selects dentro de CV2 |
 | 9 | [Botones](#9-botones) | Componentes interactivos de botón |
-| 10 | [Menús Desplegables (Select Menus)](#10-menús-desplegables-select-menus) | Menús de selección de opciones |
-| 11 | [Manejo de Interacciones](#11-manejo-de-interacciones) | Cómo responder a clics y selecciones |
-| 12 | [Modals (Ventanas Emergentes)](#12-modals-ventanas-emergentes) | Formularios emergentes para entrada de datos |
-| 13 | [Ejemplos del Mundo Real](#13-ejemplos-del-mundo-real) | Patrones completos de un bot en producción |
-| 14 | [Consejos y Errores Comunes](#14-consejos-y-errores-comunes) | Límites, errores y mejores prácticas |
+| 10 | [Select Menus](#10-select-menus) | Menús de selección |
+| 11 | [Manejo de Interacciones](#11-manejo-de-interacciones) | Responder a clics y selecciones |
+| 12 | [Modals](#12-modals-ventanas-emergentes) | Formularios emergentes |
+| 13 | [Ejemplos Reales](#13-ejemplos-del-mundo-real) | Patrones completos de producción |
+| 14 | [Consejos y Errores](#14-consejos-y-errores-comunes) | Límites y mejores prácticas |
 
 ---
 
 ## 1. Estructura del Mensaje
+
+:warning: **Requisito:** discord.js **>= 14.23.0**
 
 En Discord.js no existe una clase `LayoutView`. Un mensaje CV2 es simplemente una llamada normal a `send()` o `reply()` con dos cosas clave:
 
 1. Un array `components` que contiene tus builders
 2. La bandera `MessageFlags.IsComponentsV2`
 
-### Estructura Básica
+### :scroll: Estructura Básica
 
 ```js
 const { MessageFlags } = require('discord.js');
@@ -102,7 +123,7 @@ await channel.send({
 });
 ```
 
-### Responder a una Interacción
+### :white_check_mark: Responder a una Interacción
 
 ```js
 await interaction.reply({
@@ -111,7 +132,7 @@ await interaction.reply({
 });
 ```
 
-### Respuesta Efímera
+### :ghost: Respuesta Efímera
 
 ```js
 await interaction.reply({
@@ -120,7 +141,7 @@ await interaction.reply({
 });
 ```
 
-### Seguimiento Después de un Defer
+### :hourglass_flowing_sand: Seguimiento Después de un Defer
 
 ```js
 await interaction.deferReply();
@@ -133,9 +154,9 @@ await interaction.editReply({
 });
 ```
 
-> No necesitas la bandera al hacer defer — solo cuando envías el contenido real del componente.
+> :bulb: No necesitas la bandera al hacer `defer` — solo cuando envías el contenido real del componente.
 
-### Múltiples Componentes de Primer Nivel
+### :building_construction: Múltiples Componentes de Primer Nivel
 
 Puedes pasar múltiples builders en el array — se apilan verticalmente:
 
@@ -146,7 +167,7 @@ await channel.send({
 });
 ```
 
-### Cómo Encaja Todo
+### :classical_building: Cómo Encaja Todo
 
 ```
 components: [
@@ -162,7 +183,7 @@ components: [
 ]
 ```
 
-### `id` del Componente vs `custom_id`
+### :id: `id` del Componente vs `custom_id`
 
 Cada componente puede tener un campo `id` numérico opcional — **no** es lo mismo que `custom_id`.
 
@@ -170,20 +191,22 @@ Cada componente puede tener un campo `id` numérico opcional — **no** es lo mi
 new TextDisplayBuilder().setContent('Count: 0').setId(1001)
 ```
 
-- `id` — un número que estableces para encontrar un componente después en respuestas de interacción
-- `custom_id` — un string en botones/selects que activa eventos de interacción
+| Campo | Tipo | Propósito |
+|:------|:-----|:----------|
+| `id` | `number` | Encontrar un componente después en respuestas de interacción |
+| `custom_id` | `string` | Identificador en botones/selects que activa eventos |
 
-### Notas
+### :memo: Notas
 
-- La bandera `IsComponentsV2` **no puede eliminarse** de un mensaje una vez enviado
-- Una vez establecida, `content`, `embeds`, `stickers` y `polls` están bloqueados en ese mensaje
-- Los mensajes con `components: [actionRow]` al estilo antiguo siguen funcionando — CV2 es optativo por mensaje
-- Límite total de componentes: **40** (incluyendo anidados)
-- Límite total de texto: **4000 caracteres** en todo el contenido de `TextDisplayBuilder`
+- :no_entry: La bandera `IsComponentsV2` **no puede eliminarse** de un mensaje una vez enviado
+- :no_entry: Con CV2 activo, `content`, `embeds`, `stickers` y `polls` están **bloqueados**
+- :recycle: Los mensajes con `components: [actionRow]` al estilo antiguo siguen funcionando — CV2 es optativo por mensaje
+- :1234: Límite total de componentes: **40** (incluyendo anidados)
+- :abc: Límite total de texto: **4000 caracteres** en todo `TextDisplayBuilder`
 
 ---
 
-## 2. Container
+## 2. :package: Container
 
 `ContainerBuilder` es el bloque de construcción principal de un diseño CV2. Agrupa componentes y opcionalmente añade una barra de acento de color en el lado izquierdo — similar a la franja de color de un embed de Discord.
 
@@ -260,7 +283,7 @@ const container = new ContainerBuilder()
 
 ---
 
-## 3. TextDisplay
+## 3. :page_facing_up: TextDisplay
 
 `TextDisplayBuilder` renderiza texto Markdown dentro de un diseño CV2. Es la forma principal de mostrar cualquier contenido escrito — títulos, descripciones, información tipo campo, etc. Reemplaza directamente el antiguo campo `content` y las descripciones de embeds.
 
@@ -342,7 +365,7 @@ Usa `.setId()` para poder encontrar y actualizar este componente después median
 
 ---
 
-## 4. Separator
+## 4. :straight_ruler: Separator
 
 `SeparatorBuilder` añade una línea divisoria horizontal o espacio entre componentes. Ideal para separar un título del contenido del cuerpo o para dividir secciones visuales.
 
@@ -406,7 +429,7 @@ const container = new ContainerBuilder()
 
 ---
 
-## 5. Section y Thumbnail
+## 5. :card_file_box: Section y Thumbnail
 
 `SectionBuilder` coloca texto **lado a lado** con un accesorio — ya sea un `ThumbnailBuilder` (imagen) o un `ButtonBuilder`. Útil para tarjetas de perfil, paneles de información de usuario, o cualquier combinación de texto + imagen.
 
@@ -508,7 +531,7 @@ new ThumbnailBuilder()
 
 ---
 
-## 6. MediaGallery
+## 6. :framed_picture: MediaGallery
 
 `MediaGalleryBuilder` muestra una o más imágenes o videos en una cuadrícula. Es el reemplazo de CV2 para `embed.setImage()` y las vistas previas de archivos adjuntos.
 
@@ -607,7 +630,7 @@ const container = new ContainerBuilder()
 
 ---
 
-## 7. File Component
+## 7. :paperclip: File Component
 
 `FileBuilder` te permite mostrar un archivo adjunto **en línea** dentro de un diseño CV2 — transcripciones, logs, exportaciones, lo que sea.
 
@@ -691,7 +714,7 @@ new FileBuilder().setURL('attachment://secret.txt').setSpoiler(true)
 
 ---
 
-## 8. ActionRow
+## 8. :bookmark_tabs: ActionRow
 
 `ActionRowBuilder` te permite colocar **botones y menús desplegables** dentro de un diseño CV2. En CV2, las action rows van dentro de un `ContainerBuilder` o en el primer nivel del array `components`.
 
@@ -775,7 +798,7 @@ for (let i = 0; i < buttons.length; i += 5) {
 
 ---
 
-## 9. Botones
+## 9. :radio_button: Botones
 
 Los botones son componentes interactivos colocados dentro de un `ActionRowBuilder`. Cuando se hace clic en ellos, disparan un evento `interactionCreate` que tu bot maneja.
 
@@ -926,7 +949,7 @@ client.on('interactionCreate', async interaction => {
 
 ---
 
-## 10. Menús Desplegables (Select Menus)
+## 10. :dropcap: Menús Desplegables (Select Menus)
 
 Los menús desplegables permiten a los usuarios elegir una o más opciones de una lista. Van dentro de un `ActionRowBuilder` — un select por fila.
 
@@ -1099,7 +1122,7 @@ client.on('interactionCreate', async interaction => {
 
 ---
 
-## 11. Manejo de Interacciones
+## 11. :arrows_counterclockwise: Manejo de Interacciones
 
 Cada clic en un botón o selección en un menú desplegable de un componente enviado por tu bot dispara una `interaction`, activando el evento `Client#interactionCreate`.
 
@@ -1228,7 +1251,7 @@ module.exports = {
 
 ---
 
-## 12. Modals (Ventanas Emergentes)
+## 12. :newspaper: Modals (Ventanas Emergentes)
 
 Los modals son ventanas emergentes que te permiten solicitar información adicional al usuario. Esta respuesta de interacción en forma de formulario bloquea al usuario de interactuar con Discord hasta que el modal se envía o se descarta.
 
@@ -1483,7 +1506,7 @@ Los envíos de entrada de texto vacíos devuelven un string vacío `""`. Los men
 
 ---
 
-## 13. Ejemplos del Mundo Real
+## 13. :rocket: Ejemplos del Mundo Real
 
 Patrones completos y funcionales para casos de uso comunes de CV2 en Discord.js.
 
@@ -1773,7 +1796,7 @@ function buildPage(items, page = 0, pageSize = 5) {
 
 ---
 
-## 14. Consejos y Errores Comunes
+## 14. :bulb: Consejos y Errores Comunes
 
 Errores frecuentes, límites y cosas que debes saber antes de publicar.
 
@@ -1868,4 +1891,14 @@ El límite de **40 componentes** es el más importante a vigilar — cada `Conta
 
 ---
 
-> Guía original por **itsfizys** • Traducida y ampliada con contenido de [discordjs.guide](https://discordjs.guide) • Servidor de Soporte: [discord.gg/aerox](https://discord.gg/aerox)
+---
+
+## :heart: Créditos y Soporte
+
+| | |
+|:--|:--|
+| :book: **Guía original** | [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide) por **itsfizys** |
+| :link: **Contenido adicional** | [discordjs.guide](https://discordjs.guide) — guía oficial de discord.js |
+| :earth_americas: **Traducción** | Realizada por la comunidad |
+| :speech_balloon: **Soporte** | [discord.gg/aerox](https://discord.gg/aerox) |
+| :star: **¿Te gustó?** | ¡Deja una estrella en el [repo original](https://github.com/itsfizys/discordjs-components-v2-guide)! |

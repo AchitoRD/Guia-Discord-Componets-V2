@@ -1,4 +1,4 @@
-# 4. Separator
+# 4. :straight_ruler: Separator
 
 `SeparatorBuilder` añade una línea divisoria horizontal o espacio entre componentes. Ideal para separar un título del contenido del cuerpo o para dividir secciones visuales.
 
@@ -61,3 +61,8 @@ const container = new ContainerBuilder()
 - Los separadores son puramente visuales — no contienen datos
 - Puedes usar tantos separadores como necesites dentro de un contenedor
 - Por defecto `setDivider(true)` muestra una línea visible; `false` es solo espacio
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

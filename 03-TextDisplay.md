@@ -1,4 +1,4 @@
-# 3. TextDisplay
+# 3. :page_facing_up: TextDisplay
 
 `TextDisplayBuilder` renderiza texto Markdown dentro de un diseño CV2. Es la forma principal de mostrar cualquier contenido escrito — títulos, descripciones, información tipo campo, etc. Reemplaza directamente el antiguo campo `content` y las descripciones de embeds.
 
@@ -78,4 +78,9 @@ Usa `.setId()` para poder encontrar y actualizar este componente después median
 - Puedes tener tantos `TextDisplayBuilder` como necesites
 - No hay división título/descripción como en los embeds — usa encabezados Markdown (`#`, `##`, `###`)
 - El texto total en **todos** los componentes `TextDisplayBuilder` en un mensaje no puede exceder **4000 caracteres**
-- Los emojis (unicode y personalizados de Discord) se renderizan bien
+- Los emojis se renderizan bien
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

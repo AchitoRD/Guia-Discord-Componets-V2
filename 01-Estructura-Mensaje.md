@@ -1,6 +1,6 @@
-# 1. Estructura del Mensaje
+# 1. :triangular_ruler: Estructura del Mensaje
 
-> **⚠️ Requisito:** discord.js **>= 14.23.0** — las APIs de Components V2 no existen en versiones anteriores.
+> :warning: **Requisito:** discord.js **>= 14.23.0** — las APIs de Components V2 no existen en versiones anteriores.
 
 En Discord.js no existe una clase `LayoutView`. Un mensaje CV2 es simplemente una llamada normal a `send()` o `reply()` con dos cosas clave:
 
@@ -98,3 +98,8 @@ new TextDisplayBuilder().setContent('Count: 0').setId(1001)
 - Los mensajes con `components: [actionRow]` al estilo antiguo siguen funcionando — CV2 es optativo por mensaje
 - Límite total de componentes: **40** (incluyendo anidados)
 - Límite total de texto: **4000 caracteres** en todo el contenido de `TextDisplayBuilder`
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

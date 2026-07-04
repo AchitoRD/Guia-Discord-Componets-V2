@@ -1,4 +1,4 @@
-# 12. Modals (Ventanas Emergentes)
+# 12. :newspaper: Modals (Ventanas Emergentes)
 
 Los modals son ventanas emergentes que te permiten solicitar información adicional al usuario. Esta respuesta de interacción en forma de formulario bloquea al usuario de interactuar con Discord hasta que el modal se envía o se descarta.
 
@@ -199,7 +199,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 ```
 
-### ⚠️ Detalles importantes sobre `getUploadedFiles()`
+### :warning: Detalles importantes sobre `getUploadedFiles()`
 
 `interaction.fields.getUploadedFiles('campo')` devuelve un **`Collection<string, Attachment>`** de discord.js, **NO** un Array nativo de JavaScript.
 
@@ -217,7 +217,7 @@ if (files?.size > 0) {
 if (files?.length) { /* undefined */ }
 ```
 
-### 🖼️ Usar archivos de modal directamente en MediaGallery
+### :framed_picture: Usar archivos de modal directamente en MediaGallery
 
 La URL que devuelve `files.first().url` es una URL directa de la CDN de Discord. Puedes usarla directamente en `MediaGalleryItemBuilder.setURL()` — **no necesitas** descargar con `fetch` ni re-subir con `AttachmentBuilder`:
 
@@ -234,7 +234,7 @@ if (imgFiles?.size) {
 }
 ```
 
-### 🧩 Ejemplo completo: Modal con FileUploadBuilder → MediaGallery
+### :jigsaw: Ejemplo completo: Modal con FileUploadBuilder :arrow_right: MediaGallery
 
 Flujo completo: el usuario abre un modal, sube una imagen, y al enviar se muestra en una galería CV2.
 
@@ -304,3 +304,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
 ```
 
 Los campos de texto vacíos devuelven `""`. Los selects sin selección devuelven `[]`.
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :link: **Contenido adicional** de [discordjs.guide](https://discordjs.guide) (modals)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

@@ -1,4 +1,4 @@
-# 6. MediaGallery
+# 6. :framed_picture: MediaGallery
 
 `MediaGalleryBuilder` muestra una o más imágenes o videos en una cuadrícula. Es el reemplazo de CV2 para `embed.setImage()` y las vistas previas de archivos adjuntos.
 
@@ -92,3 +92,8 @@ const container = new ContainerBuilder()
 - Hasta **10 elementos** por galería
 - Soporta imágenes, videos y GIFs mediante URL
 - Usa `attachment://filename` para archivos locales junto con `files: [attachment]`
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

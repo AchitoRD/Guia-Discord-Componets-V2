@@ -1,6 +1,6 @@
-# 14. Consejos y Errores Comunes
+# 14. :bulb: Consejos y Errores Comunes
 
-> **⚠️ Requisito:** discord.js **>= 14.23.0** — las APIs de Components V2, `LabelBuilder`, `FileUploadBuilder`, `addLabelComponents`, etc. no existen en versiones anteriores.
+> :warning: **Requisito:** discord.js **>= 14.23.0** — las APIs de Components V2, `LabelBuilder`, `FileUploadBuilder`, `addLabelComponents`, etc. no existen en versiones anteriores.
 
 Errores frecuentes, límites y cosas que debes saber antes de publicar.
 
@@ -105,15 +105,15 @@ Un `SectionBuilder` acepta entre **1 y 3** elementos `TextDisplayBuilder`. Más 
 
 El límite de **40 componentes** es el más importante — cada `ContainerBuilder`, `TextDisplayBuilder`, `SeparatorBuilder`, `SectionBuilder`, `ActionRowBuilder`, `ButtonBuilder`, etc. cuenta, incluyendo los anidados.
 
-## TextInputBuilder NO lleva .setLabel() dentro de LabelBuilder
+## TextInputBuilder NO lleva `.setLabel()` dentro de LabelBuilder
 
 Cuando un `TextInputBuilder` está envuelto en un `LabelBuilder`, **no debe** tener `.setLabel()`. La etiqueta va únicamente en el `LabelBuilder`:
 
 ```js
-// ❌ INCORRECTO — lanza TEXT_INPUT_COMPONENT_LABEL_IN_LABEL_COMPONENT
+// :x: INCORRECTO — lanza TEXT_INPUT_COMPONENT_LABEL_IN_LABEL_COMPONENT
 new TextInputBuilder().setLabel('Título').setCustomId('titulo')
 
-// ✅ CORRECTO — la label va en LabelBuilder
+// :white_check_mark: CORRECTO — la label va en LabelBuilder
 new LabelBuilder()
   .setLabel('Título')
   .setTextInputComponent(
@@ -128,12 +128,12 @@ new LabelBuilder()
 ```js
 const files = interaction.fields.getUploadedFiles('imagen');
 
-// ✅ Válido
+// :white_check_mark: Válido
 if (files?.size > 0) { /* hay archivos */ }
 files.first().url        // URL del primer archivo
 files.map(a => a.url)    // URLs de todos
 
-// ❌ NO funciona
+// :x: NO funciona
 if (files?.length) { /* undefined — Collection no tiene .length */ }
 ```
 
@@ -150,3 +150,8 @@ Mostrar un modal debe ser la **primera respuesta** a una interacción. No puedes
 ## 3 Segundos para Responder
 
 Toda interacción (botón, select, modal) debe recibir una respuesta dentro de **3 segundos** o Discord la considerará fallida. Usa `deferReply()` o `deferUpdate()` si necesitas más tiempo.
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

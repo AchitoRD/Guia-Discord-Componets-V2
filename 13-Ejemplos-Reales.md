@@ -1,10 +1,10 @@
-# 13. Ejemplos del Mundo Real
+# 13. :rocket: Ejemplos del Mundo Real
 
 Patrones completos y funcionales para casos de uso comunes de CV2 en Discord.js.
 
 ---
 
-## 1. Notificación Efímera Simple
+## 1. :ghost: Notificación Efímera Simple
 
 ```js
 const { ContainerBuilder, TextDisplayBuilder, MessageFlags } = require('discord.js');
@@ -20,7 +20,7 @@ await interaction.reply({
 });
 ```
 
-## 2. Contenedor de Información con Título + Cuerpo
+## 2. :card_index: Contenedor de Información con Título + Cuerpo
 
 ```js
 const { ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize, MessageFlags } = require('discord.js');
@@ -42,7 +42,7 @@ await interaction.reply({
 });
 ```
 
-## 3. Panel de Control de Ticket
+## 3. :control_knobs: Panel de Control de Ticket
 
 ```js
 const { ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize,
@@ -83,7 +83,7 @@ await channel.send({
 });
 ```
 
-## 4. Panel con Menú Desplegable
+## 4. :arrow_down_small: Panel con Menú Desplegable
 
 ```js
 const { StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require('discord.js');
@@ -121,7 +121,7 @@ await channel.send({
 });
 ```
 
-## 5. Log con Archivo Adjunto
+## 5. :scroll: Log con Archivo Adjunto
 
 ```js
 const { AttachmentBuilder, FileBuilder } = require('discord.js');
@@ -155,7 +155,7 @@ await logChannel.send({
 });
 ```
 
-## 6. Avatar con MediaGallery
+## 6. :bust_in_silhouette: Avatar con MediaGallery
 
 ```js
 const avatarUrl = user.displayAvatarURL({ size: 1024, extension: 'png' });
@@ -185,7 +185,7 @@ await interaction.reply({
 });
 ```
 
-## 7. Comando Slash Completo
+## 7. :robot: Comando Slash Completo
 
 ```js
 const { SlashCommandBuilder, MessageFlags, ContainerBuilder, TextDisplayBuilder,
@@ -245,7 +245,7 @@ module.exports = {
 };
 ```
 
-## 8. Paginación
+## 8. :track_next: Paginación
 
 ```js
 function buildPage(items, page = 0, pageSize = 5) {
@@ -278,7 +278,7 @@ function buildPage(items, page = 0, pageSize = 5) {
 }
 ```
 
-## 9. Modal con FileUploadBuilder + MediaGallery (flujo completo)
+## 9. :jigsaw: Modal con FileUploadBuilder + MediaGallery (flujo completo)
 
 El usuario sube una imagen mediante un modal y se muestra inmediatamente en una galería CV2.
 
@@ -348,3 +348,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
   });
 });
 ```
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :link: **Contenido adicional** de [discordjs.guide](https://discordjs.guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

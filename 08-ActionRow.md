@@ -1,4 +1,4 @@
-# 8. ActionRow
+# 8. :bookmark_tabs: ActionRow
 
 `ActionRowBuilder` te permite colocar **botones y menús desplegables** dentro de un diseño CV2. En CV2, las action rows van dentro de un `ContainerBuilder` o en el primer nivel del array `components`.
 
@@ -81,3 +81,8 @@ for (let i = 0; i < buttons.length; i += 5) {
 - Cada `ActionRow` puede contener hasta **5 botones** o **1 menú desplegable**
 - `custom_id` es obligatorio en todos los botones y selects (excepto `ButtonStyle.Link`)
 - Las interacciones de botones se manejan mediante el evento `interactionCreate`
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

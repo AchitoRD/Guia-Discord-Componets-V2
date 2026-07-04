@@ -1,4 +1,4 @@
-# 10. Menús Desplegables (Select Menus)
+# 10. :arrow_down: Menús Desplegables (Select Menus)
 
 Los menús desplegables permiten a los usuarios elegir una o más opciones de una lista. Van dentro de un `ActionRowBuilder` — un select por fila.
 
@@ -166,3 +166,8 @@ client.on('interactionCreate', async interaction => {
 - Hasta **25 opciones** en un `StringSelectMenuBuilder`
 - `custom_id` puede tener hasta **100 caracteres**
 - Usa `interaction.values` para obtener los strings seleccionados; usa `interaction.users`, `interaction.roles` o `interaction.channels` para selects de entidades
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

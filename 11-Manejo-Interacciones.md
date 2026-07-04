@@ -1,4 +1,4 @@
-# 11. Manejo de Interacciones
+# 11. :arrows_counterclockwise: Manejo de Interacciones
 
 Cada clic en un botón o selección en un menú desplegable de un componente enviado por tu bot dispara una `interaction`, activando el evento `Client#interactionCreate`.
 
@@ -124,3 +124,8 @@ module.exports = {
   },
 };
 ```
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)

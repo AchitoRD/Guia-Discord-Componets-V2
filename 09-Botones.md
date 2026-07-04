@@ -1,4 +1,4 @@
-# 9. Botones
+# 9. :radio_button: Botones
 
 Los botones son componentes interactivos colocados dentro de un `ActionRowBuilder`. Cuando se hace clic en ellos, disparan un evento `interactionCreate` que tu bot maneja.
 

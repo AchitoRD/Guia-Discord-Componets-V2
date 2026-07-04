@@ -1,4 +1,4 @@
-# 7. File Component
+# 7. :paperclip: File Component
 
 `FileBuilder` te permite mostrar un archivo adjunto **en línea** dentro de un diseño CV2 — transcripciones, logs, exportaciones, lo que sea.
 
@@ -81,3 +81,8 @@ new FileBuilder().setURL('attachment://secret.txt').setSpoiler(true)
 - El nombre de archivo en `attachment://` debe **coincidir exactamente** con el nombre establecido en `AttachmentBuilder` — distingue mayúsculas/minúsculas
 - Solo **un** `FileBuilder` por mensaje (limitación de Discord)
 - Siempre llama a `.setName()` en el `AttachmentBuilder` para que el nombre de archivo sea explícito
+
+---
+
+> :book: **Guía original** por **itsfizys** — :link: [discordjs-components-v2-guide](https://github.com/itsfizys/discordjs-components-v2-guide)  
+> :speech_balloon: **Soporte:** [discord.gg/aerox](https://discord.gg/aerox)
